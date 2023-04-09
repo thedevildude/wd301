@@ -47,6 +47,7 @@ class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
             type="text"
             className="border-2 p-2 border-gray-400"
             value={this.state.title}
+            required
             onChange={this.handleChange}
           />
           <input
@@ -61,6 +62,7 @@ class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
             id="todoDueDate"
             className="border-2 p-2 border-gray-400"
             value={this.state.dueDate}
+            required
             onChange={this.handleChange}
           />
         </div>

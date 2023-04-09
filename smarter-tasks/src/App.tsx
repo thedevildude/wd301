@@ -1,12 +1,9 @@
-import TaskList from "./TaskList";
-import TaskForm from "./TaskForm";
-import './App.css';
+import TaskApp from "./TaskApp";
 
 function App() {
   return (
     <div className="App">
-      <TaskForm/>
-      <TaskList tasks={[]}/>
+      <TaskApp />
     </div>
   );
 }

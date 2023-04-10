@@ -45,6 +45,7 @@ class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
         <div className="flex flex-col">
           <input
             type="text"
+            id="todoTitle"
             className="border-2 p-2 border-gray-400"
             value={this.state.title}
             required

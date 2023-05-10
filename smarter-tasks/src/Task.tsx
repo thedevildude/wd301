@@ -21,9 +21,7 @@ const Task = (props: TaskProp) => {
       </div>
       <button
         className="deleteTaskButton p-2 bg-blue-400 text-white mr-5"
-        onClick={
-          () => props.deleteTask(props.id)
-        }
+        onClick={() => props.deleteTask(props.id)}
       >
         Delete
       </button>

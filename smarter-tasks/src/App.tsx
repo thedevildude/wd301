@@ -10,7 +10,7 @@ import NotFound from "./NotFound";
 function App() {
   const location = useLocation();
   const hideHeader =
-    location.pathname === "/signin" || location.pathname === "/404";
+    location.pathname === "/signin" || location.pathname === "/notfound";
   return (
     <div>
       {!hideHeader && <Header />}
@@ -25,8 +25,8 @@ function App() {
           element={<ProtectedRoute element={<TaskDetailsPage />} />}
         />
         <Route path="/signin" element={<Signin />} />
-        <Route path="/404" element={<NotFound />} />
-        <Route path="*" element={<Navigate to="/404" replace />} />{" "}
+        <Route path="/notfound" element={<NotFound />} />
+        <Route path="*" element={<Navigate to="/notfound" replace />} />{" "}
       </Routes>
     </div>
   );

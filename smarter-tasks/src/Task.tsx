@@ -1,5 +1,6 @@
 import React from "react";
 import "./TaskCard.css";
+import { useNavigate } from "react-router-dom";
 
 interface TaskProp {
   id: number;
@@ -10,8 +11,13 @@ interface TaskProp {
 }
 
 const Task = (props: TaskProp) => {
+  const navigate = useNavigate();
+
   return (
-    <li className="TaskItem flex items-center justify-between shadow-md border border-slate-100">
+    <li
+      className="TaskItem flex items-center justify-between shadow-md border border-slate-100 cursor-pointer"
+      onClick={() => navigate(`/tasks/${props.id}`)}
+    >
       <div>
         <h2 className="text-base font-bold my-1">{props.title}</h2>
         <p className="text-sm text-slate-500">{props.dueDate}</p>
@@ -21,9 +27,10 @@ const Task = (props: TaskProp) => {
       </div>
       <button
         className="deleteTaskButton p-2 bg-blue-400 text-white mr-5"
-        onClick={
-          () => props.deleteTask(props.id)
-        }
+        onClick={(e) => {
+          e.stopPropagation();
+          props.deleteTask(props.id);
+        }}
       >
         Delete
       </button>

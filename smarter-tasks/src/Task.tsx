@@ -28,7 +28,6 @@ const Task = (props: TaskProp) => {
       <button
         className="deleteTaskButton p-2 bg-blue-400 text-white mr-5"
         onClick={(e) => {
-          e.stopPropagation();
           props.deleteTask(props.id);
         }}
       >

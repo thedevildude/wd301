@@ -1,6 +1,6 @@
 import React from "react";
 import "./TaskCard.css";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 interface TaskProp {
   id: number;
@@ -11,15 +11,15 @@ interface TaskProp {
 }
 
 const Task = (props: TaskProp) => {
-  const navigate = useNavigate();
-
   return (
-    <li
-      className="TaskItem flex items-center justify-between shadow-md border border-slate-100 cursor-pointer"
-      onClick={() => navigate(`/tasks/${props.id}`)}
-    >
+    <li className="TaskItem flex items-center justify-between shadow-md border border-slate-100">
       <div>
-        <h2 className="text-base font-bold my-1">{props.title}</h2>
+        <Link
+          to={`/tasks/${props.id}`}
+          className="text-base font-bold my-1 cursor-pointer"
+        >
+          {props.title}
+        </Link>
         <p className="text-sm text-slate-500">{props.dueDate}</p>
         <p className="text-sm text-slate-500">
           Description: {props.description}

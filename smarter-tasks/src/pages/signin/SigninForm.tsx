@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { API_ENDPOINT } from "../../config/constants";
+import { useNavigate } from "react-router-dom";
 
 const SigninForm: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -28,7 +30,8 @@ const SigninForm: React.FC = () => {
       localStorage.setItem('authToken', data.token);
       localStorage.setItem('userData', JSON.stringify(data.user));
       
-      // After successful signin we have to redirect the user to the secured page. We will do that later.
+      // After successful signin we have to redirect the user to the secured page.
+      navigate("/dashboard");
 
     } catch (error) {
       console.error('Sign-in failed:', error);

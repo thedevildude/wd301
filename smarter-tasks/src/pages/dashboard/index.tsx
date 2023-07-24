@@ -14,14 +14,14 @@ const Dashboard: React.FC = () => {
       <h2 className="text-2xl font-bold text-center text-gray-800 mb-8">
         User details
       </h2>
-      <p id="name" className="text-xl">
+      <p id="userName" className="text-xl">
         {JSON.parse(localStorage.getItem("userData") || "").name}
       </p>
-      <p id="email" className="text-xl">
+      <p id="userEmail" className="text-xl">
         {JSON.parse(localStorage.getItem("userData") || "").email}
       </p>
       <Link
-        to={"/logout"}
+        to={"/signin"}
         id="logout-link"
         className="text-xl p-2 bg-blue-300 rounded-md text-white"
       >

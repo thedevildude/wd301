@@ -1,35 +1,48 @@
-import HomePage from "./HomePage";
-import TaskApp from "./TaskApp";
-import { Routes, Route, useLocation, Navigate } from "react-router-dom";
-import TaskDetailsPage from "./TaskDetailsPage";
-import Header from "./Header";
-import Signin from "./Signin";
-import { ProtectedRoute } from "./ProtectedRoute";
-import NotFound from "./NotFound";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import Signup from './pages/signup';
+import Signin from './pages/signin';
+import Notfound from "./pages/Notfound";
+import Dashboard from "./pages/dashboard";
+import ProtectedRoute from "./ProtectedRoute";
 
-function App() {
-  const location = useLocation();
-  const hideHeader =
-    location.pathname === "/signin" || location.pathname === "/notfound";
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Signup />,
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
+  },
+  {
+    path: "/signin", // then we've added the signin route
+    element: <Signin />,
+  },
+  {
+    path: "/notfound",
+    element: <Notfound />,
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <ProtectedRoute>
+        <Dashboard />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "*",
+    element: <Notfound />,
+  }
+]);
+
+const App = () => {
   return (
-    <div>
-      {!hideHeader && <Header />}
-      <Routes>
-        <Route path="/" element={<ProtectedRoute element={<HomePage />} />} />
-        <Route
-          path="/tasks"
-          element={<ProtectedRoute element={<TaskApp />} />}
-        />
-        <Route
-          path="/tasks/:id"
-          element={<ProtectedRoute element={<TaskDetailsPage />} />}
-        />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/notfound" element={<NotFound />} />
-        <Route path="*" element={<Navigate to="/notfound" replace />} />{" "}
-      </Routes>
-    </div>
+    <RouterProvider router={router} />
   );
 }
 
-export default App;
+export default App

@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Signup from "./pages/signup";
 import Signin from "./pages/signin";
-import Notfound from "./pages/Notfound";
+import NotFound from "./Notfound";
 import Dashboard from "./pages/dashboard";
 import ProtectedRoute from "./ProtectedRoute";
 import Logout from "./pages/logout";
@@ -25,7 +25,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/notfound",
-    element: <Notfound />,
+    element: <NotFound />,
   },
   {
     path: "/dashboard",
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <Notfound />,
+    element: <NotFound />,
   },
 ]);
 

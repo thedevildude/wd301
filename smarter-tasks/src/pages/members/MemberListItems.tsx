@@ -1,5 +1,8 @@
 import React from "react";
-import { useMembersDispatch, useMembersState } from "../../context/members/context";
+import {
+  useMembersDispatch,
+  useMembersState,
+} from "../../context/members/context";
 import { TrashIcon } from "@heroicons/react/24/outline";
 import { deleteMember } from "../../context/members/actions";
 
@@ -23,7 +26,7 @@ export default function ProjectListItems() {
     } else {
       console.log("error");
     }
-  }
+  };
 
   return (
     <>

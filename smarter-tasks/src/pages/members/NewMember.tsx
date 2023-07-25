@@ -26,7 +26,11 @@ const NewMember = () => {
   };
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     const { name, email, password } = data;
-    const response = await addMember(dispatchMembers, { name, email, password });
+    const response = await addMember(dispatchMembers, {
+      name,
+      email,
+      password,
+    });
 
     // Then depending on response, I'll either close the modal...
     if (response.ok) {

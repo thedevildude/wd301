@@ -73,4 +73,4 @@ export const deleteMember = async (dispatch: any, args: number) => {
     console.error("Operation failed:", error);
     return { ok: false, error };
   }
-}
+};

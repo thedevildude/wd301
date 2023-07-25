@@ -16,7 +16,7 @@ export type MembersActions =
   | { type: "FETCH_MEMBERS_SUCCESS"; payload: Member[] }
   | { type: "FETCH_MEMBERS_FAILURE"; payload: string }
   | { type: "ADD_MEMBER_SUCCESS"; payload: Member }
-  | { type: "DELETE_MEMBER_SUCCESS"; payload: number};
+  | { type: "DELETE_MEMBER_SUCCESS"; payload: number };
 
 export const initialState: MembersState = {
   members: [],

@@ -10,7 +10,7 @@ import Logout from "../pages/logout";
 import NotFound from "../NotFound";
 import ProjectContainer from "../pages/projects/ProjectContainer";
 import ProjectDetails from "../pages/project_details";
-import NewTask from "../pages/task/NewTask";
+import NewTask from "../pages/tasks/NewTask";
 import TaskDetailsContainer from "../pages/tasks/TaskDetailsContainer";
 
 const router = createBrowserRouter([

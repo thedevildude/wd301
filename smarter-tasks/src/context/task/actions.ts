@@ -67,7 +67,7 @@ export const refreshTasks = async (
     );
 
     if (!response.ok) {
-      throw new Error("Failed to create project");
+      throw new Error("Failed to load tasks");
     }
 
     // extract the response body as JSON data

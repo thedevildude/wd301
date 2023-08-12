@@ -7,7 +7,7 @@ import Signup from "../pages/signup";
 import Projects from "../pages/projects";
 import Members from "../pages/members";
 import Logout from "../pages/logout";
-import NotFound from "../pages/Notfound";
+import Notfound from "../pages/Notfound";
 import ProjectContainer from "../pages/projects/ProjectContainer";
 import ProjectDetails from "../pages/project_details";
 import NewTask from "../pages/tasks/NewTask";
@@ -21,11 +21,11 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <NotFound />,
+    element: <Notfound />,
   },
   {
     path: "/notfound",
-    element: <NotFound />,
+    element: <Notfound />,
   },
   {
     path: "/signin",

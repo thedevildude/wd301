@@ -1,6 +1,6 @@
 import { Dialog, Transition, Listbox } from "@headlessui/react";
 import CheckIcon from "@heroicons/react/24/outline/CheckIcon";
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useTasksDispatch, useTasksState } from "../../context/task/context";

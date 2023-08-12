@@ -24,10 +24,6 @@ const router = createBrowserRouter([
     element: <NotFound />,
   },
   {
-    path: "/notfound",
-    element: <NotFound />,
-  },
-  {
     path: "/signin",
     element: <Signin />,
   },

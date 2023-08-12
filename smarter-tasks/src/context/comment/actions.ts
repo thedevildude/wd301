@@ -1,5 +1,9 @@
 import { API_ENDPOINT } from "../../config/constants";
-import { CommentDispatch, CommentListAvailableAction, CommentPayload } from "./types";
+import {
+  CommentDispatch,
+  CommentListActionTypes,
+  CommentPayload,
+} from "./types";
 
 export const addComment = async (
   dispatch: CommentDispatch,
@@ -9,7 +13,7 @@ export const addComment = async (
 ) => {
   const token = localStorage.getItem("authToken") ?? "";
   try {
-    dispatch({ type: CommentListAvailableAction.CREATE_COMMENT_REQUEST });
+    dispatch({ type: CommentListActionTypes.CREATE_COMMENT_REQUEST });
     const response = await fetch(
       `${API_ENDPOINT}/projects/${projectID}/tasks/${taskID}/comments`,
       {
@@ -18,22 +22,22 @@ export const addComment = async (
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ description: comment }),
+        body: JSON.stringify(comment),
       }
     );
     if (!response.ok) {
       throw new Error("Failed to create comment");
     }
-    dispatch({ type: CommentListAvailableAction.CREATE_COMMENT_SUCCESS });
+    dispatch({ type: CommentListActionTypes.CREATE_COMMENT_SUCCESS });
     refreshComments(dispatch, projectID, taskID);
   } catch (error) {
     console.error("Operation failed:", error);
     dispatch({
-      type: CommentListAvailableAction.CREATE_COMMENT_FAILURE,
+      type: CommentListActionTypes.CREATE_COMMENT_FAILURE,
       payload: "Unable to create comment",
     });
   }
-}
+};
 
 export const refreshComments = async (
   dispatch: CommentDispatch,
@@ -42,11 +46,10 @@ export const refreshComments = async (
 ) => {
   const token = localStorage.getItem("authToken") ?? "";
   try {
-    dispatch({ type: CommentListAvailableAction.FETCH_COMMENTS_REQUEST });
+    dispatch({ type: CommentListActionTypes.FETCH_COMMENTS_REQUEST });
     const response = await fetch(
       `${API_ENDPOINT}/projects/${projectID}/tasks/${taskID}/comments`,
       {
-        method: "GET",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -54,18 +57,18 @@ export const refreshComments = async (
       }
     );
     if (!response.ok) {
-      throw new Error("Failed to load comments");
+      throw new Error("Failed to fetch comments");
     }
-    const comments = await response.json();
+    const data = await response.json();
     dispatch({
-      type: CommentListAvailableAction.FETCH_COMMENTS_SUCCESS,
-      payload: comments,
+      type: CommentListActionTypes.FETCH_COMMENTS_SUCCESS,
+      payload: data,
     });
   } catch (error) {
-    console.error("Operation failed:", error);
+    console.error("Operation Failed:", error);
     dispatch({
-      type: CommentListAvailableAction.FETCH_COMMENTS_FAILURE,
-      payload: "Unable to load comments",
+      type: CommentListActionTypes.FETCH_COMMENTS_FAILURE,
+      payload: "Unable to fetch comments",
     });
   }
 };

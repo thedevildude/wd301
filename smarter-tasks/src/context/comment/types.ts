@@ -12,16 +12,16 @@ export type Comment = {
   description: string;
   task_id: number;
   owner: number;
-  user: Member;
+  User: Member;
   createdAt: string;
 };
 
 export type CommentPayload = Omit<
   Comment,
-  "id" | "task_id" | "user" | "createdAt"
+  "id" | "task_id" | "User" | "createdAt"
 >;
 
-export enum CommentListAvailableAction {
+export enum CommentListActionTypes {
   FETCH_COMMENTS_REQUEST = "FETCH_COMMENTS_REQUEST",
   FETCH_COMMENTS_SUCCESS = "FETCH_COMMENTS_SUCCESS",
   FETCH_COMMENTS_FAILURE = "FETCH_COMMENTS_FAILURE",
@@ -31,18 +31,18 @@ export enum CommentListAvailableAction {
   CREATE_COMMENT_FAILURE = "CREATE_COMMENT_FAILURE",
 }
 
-export type CommentActions =
-  | { type: CommentListAvailableAction.FETCH_COMMENTS_REQUEST }
+export type CommentListActions =
+  | { type: CommentListActionTypes.FETCH_COMMENTS_REQUEST }
   | {
-      type: CommentListAvailableAction.FETCH_COMMENTS_SUCCESS;
+      type: CommentListActionTypes.FETCH_COMMENTS_SUCCESS;
       payload: Comment[];
     }
-  | { type: CommentListAvailableAction.FETCH_COMMENTS_FAILURE; payload: string }
-  | { type: CommentListAvailableAction.CREATE_COMMENT_REQUEST }
-  | { type: CommentListAvailableAction.CREATE_COMMENT_SUCCESS }
+  | { type: CommentListActionTypes.FETCH_COMMENTS_FAILURE; payload: string }
+  | { type: CommentListActionTypes.CREATE_COMMENT_REQUEST }
+  | { type: CommentListActionTypes.CREATE_COMMENT_SUCCESS }
   | {
-      type: CommentListAvailableAction.CREATE_COMMENT_FAILURE;
+      type: CommentListActionTypes.CREATE_COMMENT_FAILURE;
       payload: string;
     };
 
-export type CommentDispatch = React.Dispatch<CommentActions>;
+export type CommentDispatch = React.Dispatch<CommentListActions>;

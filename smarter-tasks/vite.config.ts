@@ -51,5 +51,6 @@ export default ({ mode }) => {
     define: {
       "process.env.NODE_ENV": `"${mode}"`,
     },
+    mode: "production",
   });
 };
